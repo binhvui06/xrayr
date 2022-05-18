@@ -8,7 +8,7 @@ plain='\033[0m'
 version="v1.0.0"
 
 # check root
-[[ $EUID -ne 0 ]] && echo -e "  Lỗi: Bạn Chưa Cấp Quyền Root\n" && exit 1
+[[ $EUID -ne 0 ]] && bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/checkroot.sh) && exit 1
 
 # check os
 if [[ -f /etc/redhat-release ]]; then
@@ -26,7 +26,7 @@ elif cat /proc/version | grep -Eqi "ubuntu"; then
 elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
 else
-    echo -e "  Phiên Bản Không Hợp Lệ Vui Lòng Liên Hệ ADMIN SPEED4G.XYZ ${plain}\n" && exit 1
+    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/checkos.sh) && exit 1
 fi
 
 os_version=""
@@ -41,15 +41,15 @@ fi
 
 if [[ x"${release}" == x"centos" ]]; then
     if [[ ${os_version} -le 6 ]]; then
-        echo -e "  Vui lòng sử dụng CentOS 7 trở lên！${plain}\n" && exit 1
+        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/checkcentos.sh) && exit 1
     fi
 elif [[ x"${release}" == x"ubuntu" ]]; then
     if [[ ${os_version} -lt 16 ]]; then
-        echo -e "  Vui lòng sử dụng Ubuntu 16 trở lên！${plain}\n" && exit 1
+        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/checkubuntu.sh) && exit 1
     fi
 elif [[ x"${release}" == x"debian" ]]; then
     if [[ ${os_version} -lt 8 ]]; then
-        echo -e "  Vui lòng sử dụng Debian 8 trở lên！${plain}\n" && exit 1
+        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/checkdebian.sh) && exit 1
     fi
 fi
 
@@ -70,6 +70,7 @@ confirm() {
 }
 
 confirm_restart() {
+    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
     confirm "  Bạn Có Muốn Khởi Động Lại XrayR Không ?" "y"
     if [[ $? == 0 ]]; then
         restart
@@ -79,11 +80,13 @@ confirm_restart() {
 }
 
 before_show_menu() {
+bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
     echo && echo -n -e "  Nhấn Enter Để Quay Lại Menu Chính: ${plain}" && read temp
     show_menu
 }
 
 install() {
+bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
     bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/install.sh)
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
@@ -95,6 +98,7 @@ install() {
 }
 
 update() {
+bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
     if [[ $# == 0 ]]; then
         echo && echo -n -e "  Nhập Phiên Bản Được Chỉ Định ( Mặc Định Phiên Bản Mới Nhất ): " && read version
     else
@@ -110,7 +114,7 @@ update() {
 #    fi
     bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/install.sh) $version
     if [[ $? == 0 ]]; then
-        echo -e "  Cập Nhật Hoàn Tất, XrayR Đã Được Khởi Động Lại Tự Động ${plain}"
+        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/updatesuccess.sh)
         exit
     fi
 
@@ -142,6 +146,7 @@ config() {
 }
 
 uninstall() {
+bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
     confirm "  Bạn Có Chắc Chắn Muốn Gỡ Cài Đặt XrayR Không ?" " n"
     if [[ $? != 0 ]]; then
         if [[ $# == 0 ]]; then
@@ -158,7 +163,7 @@ uninstall() {
     rm /usr/local/XrayR/ -rf
 
     echo ""
-    echo -e "  Gỡ Cài Đặt Thành Công ! " # nếu bạn muốn xóa tập lệnh này, hãy chạy sau khi thoát tập lệnh rm /usr/bin/XrayR -f xóa"
+    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/uninstall.sh)
     echo ""
 
     if [[ $# == 0 ]]; then
@@ -169,16 +174,15 @@ uninstall() {
 start() {
     check_status
     if [[ $? == 0 ]]; then
-        echo ""
-        echo -e "  XrayR Đang Hoạt Động, Nếu Muốn Khởi Động Lại XrayR Vui Lòng Nhập XrayR Restart${plain}"
+        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/startonline.sh)
     else
         systemctl start XrayR
         sleep 2
         check_status
         if [[ $? == 0 ]]; then
-            echo -e "  XrayR Khởi Động Thành Công ! (COPYRIGHT BY ADMIN SPEED4G.XYZ) ${plain}"
+            bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/startsuccess.sh)
         else
-            echo -e "  XrayR Khởi Động Thất Bại, Vui Lòng Sử Dụng XrayR Log Để Kiểm Tra${plain}"
+            bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/startfailed.sh)
         fi
     fi
 
@@ -192,9 +196,9 @@ stop() {
     sleep 2
     check_status
     if [[ $? == 1 ]]; then
-        echo -e "  XrayR Đã Dừng Thành Công !${plain}"
+        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/stopsucces.sh)
     else
-        echo -e "  XrayR Không Dừng Được, Vui Lòng Sử Dụng XrayR Log Để Kiểm Tra${plain}"
+        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/stopfailed.sh)
     fi
 
     if [[ $# == 0 ]]; then
@@ -207,9 +211,9 @@ restart() {
     sleep 2
     check_status
     if [[ $? == 0 ]]; then
-        echo -e "  XrayR Khởi Động Lại Thành Công ! (COPYRIGHT BY ADMIN SPEED4G.XYZ)${plain}"
+        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/restartsuccess.sh)
     else
-        echo -e "  XrayR Khởi Động Lại Thất Bại, Vui Lòng Sử Dụng XrayR Log Để Kiểm Tra${plain}"
+        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/restartfailed.sh)
     fi
     if [[ $# == 0 ]]; then
         before_show_menu
@@ -366,6 +370,7 @@ show_XrayR_version() {
 }
 
 show_usage() {
+bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
     echo ''
     echo "------------[Nguyễn Nghị]------------"
     echo "---------[ADMIN SPEED4G.XYZ]---------"
@@ -389,6 +394,7 @@ show_usage() {
 }
 
 show_menu() {
+bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
     echo -e "
     Các Tập Lệnh Quản Lý Phụ Trợ XrayR，Không Hoạt Động Với Docker${plain}
     ${green}--- [Nguyễn Nghị] ---${plain}
@@ -409,7 +415,7 @@ show_menu() {
 ————————————————————————————————
     7. Xem Trạng Thái XrayR
 ————————————————————————————————
-    8. Xem Nhật Ný XrayR
+    8. Xem Nhật Ký XrayR
 ————————————————————————————————
     9. Cài Đặt XrayR Tự Khởi Động
 ————————————————————————————————
