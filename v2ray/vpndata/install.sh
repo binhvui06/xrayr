@@ -155,7 +155,7 @@ install_XrayR() {
     chmod +x XrayR
     mkdir /etc/XrayR/ -p
     rm /etc/systemd/system/XrayR.service -f
-    file="https://raw.githubusercontent.com/Nghi235/xrayr/main/speed4g/XrayR.service"
+    file="https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/XrayR.service"
     wget -N --no-check-certificate -O /etc/systemd/system/XrayR.service ${file}
     #cp -f XrayR.service /etc/systemd/system/
     systemctl daemon-reload
@@ -190,7 +190,7 @@ install_XrayR() {
     if [[ ! -f /etc/XrayR/custom_outbound.json ]]; then
         cp custom_outbound.json /etc/XrayR/
     fi
-    curl -o /usr/bin/XrayR -Ls https://raw.githubusercontent.com/Nghi235/xrayr/main/speed4g/XrayR.sh
+    curl -o /usr/bin/XrayR -Ls https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/XrayR.sh
     chmod +x /usr/bin/XrayR
     ln -s /usr/bin/XrayR /usr/bin/xrayr # chữ thường tương thích
     chmod +x /usr/bin/xrayr
