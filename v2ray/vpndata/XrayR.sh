@@ -84,7 +84,7 @@ before_show_menu() {
 }
 
 install() {
-    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/xrayr/main/speed4g/install.sh)
+    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/install.sh)
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
             start
@@ -108,7 +108,7 @@ update() {
 #        fi
 #        return 0
 #    fi
-    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/xrayr/main/speed4g/install.sh) $version
+    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/install.sh) $version
     if [[ $? == 0 ]]; then
         echo -e "  Cập Nhật Hoàn Tất, XrayR Đã Được Khởi Động Lại Tự Động ${plain}"
         exit
@@ -257,7 +257,7 @@ show_log() {
 }
 
 install_bbr() {
-    bash <(curl -L -s https://raw.githubusercontent.com/Nghi235/xrayr/main/speed4g/tcp.sh)
+    bash <(curl -L -s https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/tcp.sh)
     #if [[ $? == 0 ]]; then
     #    echo ""
     #    echo -e "${green}安装 bbr 成功，请重启服务器${plain}"
@@ -270,7 +270,7 @@ install_bbr() {
 }
 
 update_shell() {
-    wget -O /usr/bin/XrayR -N --no-check-certificate https://raw.githubusercontent.com/Nghi235/xrayr/main/speed4g/XrayR.sh
+    wget -O /usr/bin/XrayR -N --no-check-certificate https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/XrayR.sh
     if [[ $? != 0 ]]; then
         echo ""
         echo -e "  Không Tải Được Script Xuống, Vui Lòng Kiểm Tra Xem Máy Chủ Có Thể Kết Nối Với Github Không${plain}"
