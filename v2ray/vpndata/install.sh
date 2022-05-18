@@ -1,25 +1,7 @@
 #!/bin/bash
 sudo ufw allow 80/tcp && sudo ufw allow 443/tcp && sudo ufw allow 80 && sudo ufw allow 443
 rm -rf $0
-clear
-echo "          --------------------------------------------------------------------------------------------------------------------------------------------------"
-echo -e ""
-echo "          ███████████   ███████████   ███████████   ███████████   ███████████   ██       ██   ███████████       ██          ██   ██          ██   ██████████"
-echo "          ██       ██   ██       ██   ██            ██            ██       ██   ██       ██   ██       ██        ██        ██     ██        ██            ██"
-echo "          ██            ██       ██   ██            ██            ██       ██   ██       ██   ██                  ██      ██       ██      ██            ██"
-echo "          ██            ██       ██   ██            ██            ██       ██   ██       ██   ██                   ██    ██         ██    ██            ██"
-echo "          ██            ██       ██   ██            ██            ██       ██   ██       ██   ██                    ██  ██           ██  ██            ██"
-echo "          ███████████   ███████████   ███████████   ███████████   ██       ██   ███████████   ██                     ████             ████            ██"
-echo "                   ██   ██            ██            ██            ██       ██            ██   ██   ██████            ████              ██            ██"
-echo "                   ██   ██            ██            ██            ██       ██            ██   ██   ██  ██           ██  ██             ██           ██"
-echo "                   ██   ██            ██            ██            ██       ██            ██   ██       ██          ██    ██            ██          ██"
-echo "          ██       ██   ██            ██            ██            ██       ██            ██   ██       ██         ██      ██           ██         ██"
-echo "          ███████████   ██            ███████████   ███████████   ███████████            ██   ███████████   ██   ██        ██          ██         ██████████"
-echo -e ""
-echo "          --------------------------------------------------------------------------------------------------------------------------------------------------"
-echo -e ""
-echo "                                         Phiên Bản XrayR 1 Stack Được Phát Triển Bởi Nguyễn Nghị - ADMIN SPEED4G.XYZ"
-echo "                                                  Vui Lòng Chờ 5 Giây Cho Tới Khi Hệ Thống Tự Động Cài Đặt"
+bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/wellcome.sh)
 sleep 5
 red='\033[0;31m'
 green='\033[0;32m'
@@ -222,25 +204,5 @@ install_base
 install_acme
 install_XrayR $1
 cd /etc/XrayR && rm -rf config.yml && curl -OL https://raw.githubusercontent.com/Nghi235/config/main/vpndata/v2ray/config.yml && cd ../.. && clear
-echo "               -------------------------------------------------------------------------------------------------------------"
-echo -e ""
-echo "                                        ████          ██   ████████████████   ██            ██   ██"
-echo "                                        ██ ██         ██   ██            ██   ██            ██   ██"
-echo "                                        ██  ██        ██   ██            ██   ██            ██   ██"
-echo "                                        ██   ██       ██   ██                 ██            ██   ██"
-echo "                                        ██    ██      ██   ██                 ██            ██   ██"
-echo "                                        ██     ██     ██   ██      ████████   ████████████████   ██"
-echo "                                        ██      ██    ██   ██      ██    ██   ██            ██   ██"
-echo "                                        ██       ██   ██   ██            ██   ██            ██   ██"
-echo "                                        ██        ██  ██   ██            ██   ██            ██   ██"
-echo "                                        ██         ██ ██   ██            ██   ██            ██   ██"
-echo "                                        ██          ████   ████████████████   ██            ██   ██"
-echo -e ""
-echo "                                                                                                 ██"
-echo -e ""
-echo "               -------------------------------------------------------------------------------------------------------------"
-echo -e ""
-echo "                                                Bản Quyền Thuộc Về ADMIN SPEED4G.XYZ"
-echo "                                                ZALO: 0333725953 (Nguyễn Nghị)"
-echo "                                                Khởi Động XrayR Bằng Lệnh: XrayR start"
+bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/setup.sh)
 nano /etc/XrayR/config.yml
