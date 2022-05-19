@@ -1,8 +1,5 @@
 #!/bin/bash
-bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/allowport/main/allowport.sh)
-rm -rf $0
 bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/wellcome.sh)
-sleep 5
 red='\033[0;31m'
 green='\033[0;32m'
 yellow='\033[0;33m'
