@@ -205,4 +205,4 @@ install_acme
 install_XrayR $1
 cd /etc/XrayR && rm -rf config.yml && curl -OL https://raw.githubusercontent.com/Nghi235/config/main/speed4g/v2ray/config.yml && cd ../.. && clear
 bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/setup.sh)
-nano /etc/XrayR/config.yml
+nano /etc/XrayR/config.yml 
