@@ -203,6 +203,4 @@ echo -e "  Bắt Đầu Cài Đặt ${plain}"
 install_base
 install_acme
 install_XrayR $1
-cd /etc/XrayR && rm -rf config.yml && curl -OL https://raw.githubusercontent.com/Nghi235/config/main/vpndata/v2ray/config.yml && cd ../.. && clear
-bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/setup.sh)
-nano /etc/XrayR/config.yml
+bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/1stack/main/v2ray/vpndata/1stack.sh)
