@@ -39,7 +39,7 @@ elif cat /proc/version | grep -Eqi "ubuntu"; then
 elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
 else
-    echo -e "  Phiên Bản Không Hợp Lệ Vui Lòng Liên Hệ ADMIN SPEED4G.XYZ ${plain}\n" && exit 1
+    echo -e "  Phiên Bản Không Hợp Lệ Vui Lòng Liên Hệ ADMIN 4GSIEUTOCDO.COM ${plain}\n" && exit 1
 fi
 
 arch=$(arch)
